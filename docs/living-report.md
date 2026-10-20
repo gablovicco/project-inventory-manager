@@ -250,7 +250,7 @@ GitHub Actions was also configured to install the project dependencies and run t
 
 The first technical implementation was tracked through:
 
-- [Issue #13 — Set up backend skeleton and health endpoint](https://github.com/gablovicco/project-inventory-manager/issues/13)
+- [Issue #14 — Set up backend skeleton and health endpoint](https://github.com/gablovicco/project-inventory-manager/issues/14)
 - [Pull Request #15 — Set up backend health check and CI](https://github.com/gablovicco/project-inventory-manager/pull/15)
 
 The Pull Request was merged into `main` after the CI workflow completed successfully.
