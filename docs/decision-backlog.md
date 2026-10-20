@@ -92,7 +92,7 @@ Python will be used as the main programming language for the project.
 
 ### Reason
 
-The project requires a REST API, database access, automated testing and a desktop interface.
+The project requires a REST API, database access, automated testing and an  interface. -At the time of this decision, a desktop interface was planned; this was later superseded by D-008.-
 
 Python allows these parts to be implemented with relatively little setup and boilerplate, which is important for a project developed by one person.
 
@@ -173,7 +173,7 @@ Keeping the database local also makes the application easier to reproduce and ru
 ### Consequences
 
 - Product and stock movement data will be stored in a local SQLite database.
-- The browser-based frontend will not access the database directly.- The PySide6 desktop client will not access the database directly.
+- The browser-based frontend will not access the database directly.
 - All database access will go through the FastAPI backend.
 - The initial architecture is intended primarily for a local, single-user environment.
 - If the product later requires multiple simultaneous users, centralized remote access or distributed deployment, the database choice may need to be reconsidered.
