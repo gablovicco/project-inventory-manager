@@ -28,7 +28,7 @@ During Sprint 0, the following project foundations were established:
 - the CI workflow successfully executed the automated test;
 - setup, run and test instructions were added to the README.
 
-The first technical setup work was completed through issue #13 and Pull Request #15.
+The first technical setup work was completed through issue #14 and Pull Request #15.
 
 At the end of Sprint 0, the project has a working development environment and a tested REST API foundation. The main inventory functionality has intentionally not been implemented yet because it belongs to the implementation sprints.
 
