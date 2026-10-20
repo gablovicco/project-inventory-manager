@@ -32,7 +32,7 @@ The system should provide these operations through a simple browser-based interf
 
 ## Initial Scope
 
-The first version of the system will support:
+The planned scope includes:
 
 - Adding a new product.
 - Viewing the list of products.
