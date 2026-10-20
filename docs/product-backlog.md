@@ -33,7 +33,7 @@ Some work is necessary to support the product stories but does not directly repr
 
 | ID | Priority | Technical Enabler | Reason |
 |---|---|---|---|
-| TE-01 | P1 | Provide the core inventory operations through a REST API. | REST/API usage is a course requirement and will provide communication between the desktop client and backend. |
+| TE-01 | P1 | Provide the core inventory operations through a REST API. | REST/API usage is a course requirement and will provide communication between the browser-based frontend and backend. |
 | TE-02 | P1 | Store product and stock movement data in a persistent database. | Inventory information must remain available after the application is closed, and stock changes must be preserved. |
 | TE-03 | P1 | Create automated tests for important business rules and API behavior. | Required to verify correctness and provide test evidence. |
 | TE-04 | P1 | Configure a basic CI workflow that automatically runs the automated tests. | Required to provide repeatable CI evidence during development. |
