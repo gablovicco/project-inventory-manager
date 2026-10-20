@@ -28,7 +28,7 @@ For the initial version, the system assumes a single type of user. Authenticatio
 
 The goal of the project is to create a simple inventory management system that allows a user to manage products, track stock increases and decreases, view stock movement history and identify products that are running low.
 
-The system should provide these operations through a simple desktop interface supported by a REST API and persistent data storage.
+The system should provide these operations through a simple browser-based interface supported by a REST API and persistent data storage.
 
 ## Initial Scope
 
