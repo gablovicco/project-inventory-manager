@@ -122,7 +122,7 @@ It also supports request validation and automated API documentation, which shoul
 
 ### Consequences
 
-The desktop application will not access the database directly.
+The browser-based frontend will not access the database directly.
 
 Inventory operations will be performed through REST endpoints provided by the FastAPI backend.
 
@@ -130,7 +130,7 @@ Inventory operations will be performed through REST endpoints provided by the Fa
 
 ## D-006 — Use PySide6 for the Desktop Interface
 
-**Status:** Accepted
+**Status:** Superseded by D-008
 
 ### Decision
 
@@ -173,7 +173,39 @@ Keeping the database local also makes the application easier to reproduce and ru
 ### Consequences
 
 - Product and stock movement data will be stored in a local SQLite database.
-- The PySide6 desktop client will not access the database directly.
+- The browser-based frontend will not access the database directly.- The PySide6 desktop client will not access the database directly.
 - All database access will go through the FastAPI backend.
 - The initial architecture is intended primarily for a local, single-user environment.
 - If the product later requires multiple simultaneous users, centralized remote access or distributed deployment, the database choice may need to be reconsidered.
+
+  ---
+
+## D-008 — Replace the Desktop Client with a Simple Browser-Based Interface
+
+**Status:** Accepted
+
+### Decision
+
+The previously planned PySide6 desktop client will be replaced with a simple browser-based user interface implemented using HTML, CSS and JavaScript.
+
+No frontend framework such as React or Vue will be used for the initial version.
+
+### Reason
+
+The course requires a working application and the use of an API such as REST, but it does not require a native desktop interface.
+
+A browser-based interface fits naturally with the REST architecture because the frontend can communicate with the FastAPI backend directly through HTTP requests.
+
+The current user interface requirements are limited to simple forms, product lists and stock operations. These can be implemented using standard HTML, basic CSS and a small amount of JavaScript without introducing an additional GUI framework.
+
+For a project developed by one person, this reduces unnecessary setup and allows more development effort to be spent on REST, testing, CI, Git/GitHub workflow and the iterative development process.
+
+### Consequences
+
+- The application will be accessed through a web browser.
+- HTML will define the interface structure.
+- CSS will provide basic presentation and usability.
+- JavaScript will handle user interactions and REST API requests.
+- The frontend will communicate with FastAPI through HTTP.
+- The frontend will never access SQLite directly.
+- No frontend framework will be added unless a later requirement provides a clear reason for it.
