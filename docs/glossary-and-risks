@@ -50,7 +50,7 @@ The primary user of the system who manages products and stock information.
 
 ## REST API
 
-The interface used by the desktop application to communicate with the backend.
+The interface used by the browser-based frontend to communicate with the backend.
 
 The API will expose operations for retrieving and modifying inventory data using HTTP requests.
 
@@ -64,7 +64,7 @@ The API will expose operations for retrieving and modifying inventory data using
 | R-02 | Git and GitHub workflow experience is limited. | Medium | High | Use a simple and consistent workflow based on issues, feature branches, commits, pull requests and CI. Practice the workflow with a small Sprint 0 task before Sprint 1. |
 | R-03 | The project is developed by one person, creating a risk of excessive workload. | High | High | Keep the P1 backlog intentionally small. Complete required functionality before starting P2 or P3 work. |
 | R-04 | The project scope may grow during development. | Medium | High | New ideas will normally be added to the backlog rather than immediately implemented. Out-of-scope features will remain excluded unless there is a clear reason to change the scope. |
-| R-05 | Problems integrating the desktop interface with the REST API may delay development. | Medium | Medium | First verify communication with a small endpoint before building full user workflows. Keep the client-server interaction simple. |
+| R-05 | Problems integrating the browser-based frontend with the REST API may delay development.| Medium | Medium | First verify communication with a small endpoint before building full user workflows. Keep the client-server interaction simple. |
 | R-06 | Automated testing or CI configuration may take longer than expected. | Medium | Medium | Configure one simple automated test and CI workflow during Sprint 0, then extend the same setup during later sprints. |
 
 ---
