@@ -209,3 +209,27 @@ For a project developed by one person, this reduces unnecessary setup and allows
 - The frontend will communicate with FastAPI through HTTP.
 - The frontend will never access SQLite directly.
 - No frontend framework will be added unless a later requirement provides a clear reason for it.
+
+## D-009 — Use SQLModel for Database Access
+
+**Status:** Accepted
+
+### Decision
+
+SQLModel will be used to define database models and access the SQLite database.
+
+### Reason
+
+The project already uses FastAPI and requires relational persistent storage.
+
+SQLModel integrates naturally with FastAPI and provides a simple way to define Python models that also represent database tables. It uses SQLAlchemy and Pydantic underneath while keeping the database layer relatively small and understandable.
+
+This is appropriate for an individually developed project where the persistence layer should remain simple and easy to explain.
+
+### Consequences
+
+- SQLModel will be added as a project dependency.
+- SQLite will remain the persistent database.
+- Database tables will be represented using Python model classes.
+- Database operations will be performed through SQLModel sessions.
+- Database access will remain inside the FastAPI backend.
