@@ -157,7 +157,7 @@ The current automated test suite verifies:
 The current local test result is:
 
 ```text
-7 passed
+8 passed
 ```
 
 The product API tests use an isolated in-memory SQLite database so that automated testing does not modify the local application database.
