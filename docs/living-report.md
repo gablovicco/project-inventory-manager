@@ -525,7 +525,7 @@ The automated tests use a separate in-memory SQLite database so that testing doe
 The current local test result is:
 
 ```text
-7 passed
+8 passed
 ```
 
 A dependency deprecation warning is currently displayed during testing, but it does not cause the tests to fail.
