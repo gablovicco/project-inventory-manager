@@ -440,6 +440,7 @@ The following validation rules have been implemented:
 - leading and trailing whitespace is removed from valid product names;
 - the initial quantity cannot be negative;
 - the minimum stock level cannot be negative.
+- rejection of negative minimum stock levels;
 
 For example:
 
