@@ -153,6 +153,7 @@ The current automated test suite verifies:
 - product-name trimming;
 - retrieval of stored products;
 - successful loading of the browser interface.
+- rejection of negative minimum stock levels;
 
 The current local test result is:
 
