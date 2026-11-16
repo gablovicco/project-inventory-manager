@@ -61,7 +61,18 @@ def test_create_product_rejects_negative_quantity():
         },
     )
 
+def test_create_product_rejects_negative_minimum_stock_level():
+    response = client.post(
+        "/products",
+        json={
+            "name": "Mouse",
+            "current_quantity": 5,
+            "minimum_stock_level": -1,
+        },
+    )
+
     assert response.status_code == 422
+
 
 
 def test_create_product_rejects_empty_name():
