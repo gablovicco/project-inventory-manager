@@ -220,5 +220,5 @@ __marimo__/
 .streamlit/secrets.toml
 
 .venv/
-inventory.db
 .idea/
+inventory.db
