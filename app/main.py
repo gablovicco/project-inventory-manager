@@ -1,21 +1,13 @@
 from contextlib import asynccontextmanager
 from typing import Annotated
-from sqlmodel import Session, select
-
-from fastapi.responses import FileResponse
-from fastapi.staticfiles import StaticFiles
 
 from fastapi import Depends, FastAPI
-from sqlmodel import Session
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+from sqlmodel import Session, select
 
 from app.database import create_db_and_tables, get_session
 from app.models import Product, ProductCreate, ProductPublic
-from contextlib import asynccontextmanager
-
-from fastapi import FastAPI
-
-from app.database import create_db_and_tables
-from app.models import Product
 
 
 @asynccontextmanager
