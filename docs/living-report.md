@@ -32,7 +32,7 @@ For the detailed product definition, see:
 
 ## 3. Current Architecture
 
-The current architecture consists of three main parts:
+The current architecture is:
 
 ```text
 Browser-based Frontend
@@ -41,10 +41,12 @@ Browser-based Frontend
         ↓
    FastAPI Backend
         ↓
+      SQLModel
+        ↓
    SQLite Database
 ```
 
-The browser-based frontend will use:
+The browser-based frontend uses:
 
 - HTML;
 - basic CSS;
@@ -57,9 +59,11 @@ The FastAPI backend is responsible for:
 - business rules;
 - database operations.
 
+SQLModel is used to define database models and access SQLite.
+
 The frontend does not access the SQLite database directly.
 
-Business rules such as preventing negative stock are handled by the backend.
+Business rules and validation are handled by the backend.
 
 For the detailed architecture, see:
 
@@ -172,7 +176,7 @@ The highest-priority user workflows are:
 3. Record stock increases.
 4. Record stock decreases safely.
 
-Stock movements are stored from the first stock operation so that historical information is preserved.
+Stock movements are intended to be stored from the first stock operation so that historical information is preserved.
 
 Detailed artifacts:
 
@@ -284,7 +288,7 @@ The following were completed:
 - GitHub Actions CI workflow;
 - setup and test instructions.
 
-The project therefore enters Sprint 1 with both the development process and the basic technical environment already established.
+The project therefore entered Sprint 1 with both the development process and the basic technical environment established.
 
 See:
 
@@ -311,9 +315,9 @@ See:
 
 ### Sprint 1 Improvement Action
 
-During Sprint 1, only **one complete P1 user workflow will be implemented at a time before starting another user story**.
+During Sprint 1, only **one complete P1 user workflow would be implemented at a time before starting another user story**.
 
-The first feature should be completed end-to-end across:
+The first feature was intended to be completed end-to-end across:
 
 ```text
 Browser Interface
@@ -327,7 +331,7 @@ SQLite
 Automated Tests
 ```
 
-This approach is intended to reduce unfinished work and keep each implementation step easy to test, review, and explain.
+This approach was intended to reduce unfinished work and keep each implementation step easy to test, review, and explain.
 
 ---
 
@@ -335,9 +339,9 @@ This approach is intended to reduce unfinished work and keep each implementation
 
 ## 12. Status After Sprint 0
 
-Sprint 0 is complete.
+Sprint 0 was completed successfully.
 
-The project currently has:
+At the end of Sprint 0, the project had:
 
 - a clearly defined scope;
 - a prioritized backlog;
@@ -350,7 +354,7 @@ The project currently has:
 - documented setup instructions;
 - a tested Git and Pull Request workflow.
 
-Core inventory functionality will be developed during Sprint 1, Sprint 2, and Sprint 3.
+Core inventory functionality was then moved into Sprint 1, Sprint 2, and Sprint 3.
 
 ---
 
@@ -360,17 +364,17 @@ Core inventory functionality will be developed during Sprint 1, Sprint 2, and Sp
 
 ### Sprint Goal
 
-The Sprint 1 goal is to implement the first complete inventory workflow by allowing the user to create a product, store it persistently, and see the stored product in the browser interface.
+The Sprint 1 goal was to implement the first complete inventory workflow by allowing the user to create a product, store it persistently, and see the stored product in the browser interface.
 
-Sprint 1 primarily focuses on:
+Sprint 1 primarily focused on:
 
 **US-01 — Add a Product**
 
-The Sprint 0 retrospective action is followed by completing this workflow end-to-end before beginning stock-in or stock-out functionality.
+The Sprint 0 retrospective action was followed by completing this workflow end-to-end before beginning stock-in or stock-out functionality.
 
 ### Selected User Story
 
-US-01 requires the user to be able to:
+US-01 required the user to be able to:
 
 - enter a product name;
 - enter an initial stock quantity;
@@ -419,7 +423,7 @@ GET /products
 
 `GET /products` retrieves stored products from SQLite.
 
-Separate models are used for API input, database storage and API output so that the responsibilities of each model remain clear.
+Separate models are used for API input, database storage, and API output so that the responsibilities of each model remain clear.
 
 The product creation endpoint returns:
 
@@ -433,14 +437,13 @@ Invalid input is rejected by the API validation layer.
 
 ### Input Validation
 
-The following validation rules have been implemented:
+The following validation rules were implemented:
 
 - the product name cannot be empty;
 - whitespace-only product names are rejected;
 - leading and trailing whitespace is removed from valid product names;
 - the initial quantity cannot be negative;
 - the minimum stock level cannot be negative.
-- rejection of negative minimum stock levels;
 
 For example:
 
@@ -461,7 +464,7 @@ A simple browser interface was created using:
 - CSS;
 - vanilla JavaScript.
 
-The interface currently contains:
+The interface contains:
 
 - a product-name input;
 - an initial-quantity input;
@@ -473,7 +476,7 @@ JavaScript sends the form data to the FastAPI REST API as JSON.
 
 After a successful product creation, the frontend retrieves the current product list and displays the stored products in the browser.
 
-The current end-to-end flow is:
+The Sprint 1 end-to-end flow is:
 
 ```text
 Inventory Manager
@@ -511,11 +514,12 @@ Stored products can later be retrieved through `GET /products` and displayed in 
 
 The automated test suite was extended during Sprint 1.
 
-The tests currently verify:
+The tests verify:
 
 - the existing health endpoint;
 - successful product creation;
 - rejection of negative initial quantities;
+- rejection of negative minimum stock levels;
 - rejection of empty product names;
 - trimming of leading and trailing whitespace from product names;
 - retrieval of stored products;
@@ -523,17 +527,19 @@ The tests currently verify:
 
 The automated tests use a separate in-memory SQLite database so that testing does not modify the local application database.
 
-The current local test result is:
+The final Sprint 1 test result on the updated `main` branch is:
 
 ```text
 8 passed
 ```
 
+GitHub Actions CI also completed successfully for Pull Request #18.
+
 A dependency deprecation warning is currently displayed during testing, but it does not cause the tests to fail.
 
 ### US-01 Acceptance Status
 
-The functional acceptance criteria for US-01 have been implemented and verified:
+The functional acceptance criteria for US-01 were implemented and verified:
 
 - the user can enter a product name;
 - the product name is required;
@@ -544,21 +550,75 @@ The functional acceptance criteria for US-01 have been implemented and verified:
 - a valid product is stored successfully;
 - the newly created product appears in the product list.
 
-US-01 is functionally complete.
+US-01 is **Done**.
 
-However, it will only be marked **Done** after the remaining applicable Definition of Done activities are completed:
+The implementation was tracked through:
 
-- CI verification;
-- self-review;
-- Pull Request review;
-- merge into `main`;
-- project-board status update.
+- [Issue #1 — US-01 Add a Product](https://github.com/gablovicco/project-inventory-manager/issues/1)
+- [Pull Request #18 — Implement product creation workflow](https://github.com/gablovicco/project-inventory-manager/pull/18)
+
+Pull Request #18 passed CI and was merged into `main` on 16 November 2026.
+
+Issue #1 was closed after the Pull Request was merged.
+
+### Completed and Incomplete Sprint Work
+
+The primary selected backlog item, US-01, was completed.
+
+The minimum product-list functionality required to demonstrate newly created products was also implemented.
+
+US-02 is not automatically considered complete because its full acceptance criteria must still be evaluated separately.
+
+The following major capabilities were not part of the completed Sprint 1 increment:
+
+- stock increases;
+- stock decreases;
+- stock movement history;
+- low-stock behavior;
+- product editing;
+- search and filtering.
+
+These remain future backlog work.
+
+### Sprint 1 Review and Retrospective
+
+Sprint 1 successfully achieved its Sprint Goal.
+
+The Sprint 0 improvement action of completing one P1 workflow before starting another major story was followed.
+
+The first complete inventory workflow now works end-to-end across:
+
+```text
+Browser Interface
+        ↓
+REST API
+        ↓
+Input Validation
+        ↓
+SQLModel
+        ↓
+SQLite
+        ↓
+Automated Tests
+```
+
+A process problem occurred on 16 November 2026 when code changes were being made locally in PyCharm while documentation changes were also committed through the GitHub web interface to the same feature branch.
+
+This caused the local and remote histories to diverge and resulted in repeated push rejections that required remote changes to be merged before further local work could be pushed.
+
+No implementation work was lost, but the process added unnecessary Git workflow complexity.
+
+The Sprint 2 improvement action is therefore to keep implementation work local in PyCharm during active development, group documentation changes after implementation whenever practical, and pull the latest remote changes before continuing local work after editing through GitHub web.
+
+The detailed Sprint 1 review and retrospective is available in:
+
+[Sprint 1 Review and Retrospective](sprint-1-review-retrospective.md)
 
 ### Current Sprint 1 Status
 
-The first Sprint 1 end-to-end workflow is implemented on the feature branch.
+Sprint 1 is complete.
 
-The current implementation includes:
+The completed increment includes:
 
 - persistent SQLite product storage;
 - SQLModel database access;
@@ -568,9 +628,22 @@ The current implementation includes:
 - browser product creation interface;
 - browser product list;
 - isolated automated database tests;
-- eight passing automated tests.
+- eight passing automated tests;
+- successful GitHub Actions CI verification;
+- merged Pull Request #18;
+- completed US-01.
 
-The next step is to complete the Git workflow through a Pull Request, verify CI, review the completed work and merge it into `main`.
+The final implementation was merged into `main` and verified locally after the merge.
+
+The final automated test result was:
+
+```text
+8 passed
+```
+
+The product can now create and persist products through the browser-based interface and display the stored products.
+
+Stock-changing workflows and the remaining inventory functionality are still incomplete and will be addressed through later backlog work.
 
 ---
 
@@ -590,6 +663,6 @@ To be updated during Sprint 3.
 
 This document is the project's living report.
 
-It will continue to be updated during Sprint 1, Sprint 2 and Sprint 3 as the project evolves.
+It will continue to be updated during Sprint 2 and Sprint 3 as the project evolves.
 
-Existing artifacts, decisions and Git history will be preserved rather than replaced so that the development process remains traceable.
+Existing artifacts, decisions, and Git history will be preserved rather than replaced so that the development process remains traceable.
