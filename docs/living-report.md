@@ -354,34 +354,16 @@ Core inventory functionality will be developed during Sprint 1, Sprint 2, and Sp
 
 ---
 
-# Future Updates
+# Implementation Sprints
 
 ## 13. Sprint 1
 
-To be updated during Sprint 1.
+### Sprint Goal
 
-Planned focus:
+The Sprint 1 goal is to implement the first complete inventory workflow by allowing the user to create a product, store it persistently, and see the stored product in the browser interface.
 
-- implement the first complete P1 user workflow;
-- introduce persistent product storage;
-- connect the browser frontend to the REST API;
-- extend automated tests;
-- record Sprint 1 review and retrospective.
+Sprint 1 primarily focuses on:
 
-## 14. Sprint 2
+**US-01 — Add a Product**
 
-To be updated during Sprint 2.
-
-## 15. Sprint 3
-
-To be updated during Sprint 3.
-
----
-
-## 16. Report Maintenance
-
-This document is the project's living report.
-
-It will be updated throughout Sprint 1, Sprint 2, and Sprint 3 as the project evolves.
-
-Existing artifacts, decisions, and Git history will be preserved rather than replaced so that the development process remains traceable.
+The Sprint 0 retrospective action is followed by completing this
