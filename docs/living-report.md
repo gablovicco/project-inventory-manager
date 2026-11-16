@@ -567,7 +567,7 @@ The current implementation includes:
 - browser product creation interface;
 - browser product list;
 - isolated automated database tests;
-- seven passing automated tests.
+- eight passing automated tests.
 
 The next step is to complete the Git workflow through a Pull Request, verify CI, review the completed work and merge it into `main`.
 
