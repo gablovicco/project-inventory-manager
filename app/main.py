@@ -2,6 +2,9 @@ from contextlib import asynccontextmanager
 from typing import Annotated
 from sqlmodel import Session, select
 
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+
 from fastapi import Depends, FastAPI
 from sqlmodel import Session
 
@@ -22,11 +25,15 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
+@app.get("/", response_class=FileResponse)
+def read_index():
+    return "app/static/index.html"
 
 @app.post("/products", response_model=ProductPublic, status_code=201)
 def create_product(

@@ -110,3 +110,10 @@ def test_read_products():
     assert data[0]["name"] == "Keyboard"
     assert data[0]["current_quantity"] == 10
     assert data[0]["minimum_stock_level"] == 3
+
+def test_home_page():
+    response = client.get("/")
+
+    assert response.status_code == 200
+    assert "Inventory Manager" in response.text
+    assert "Add Product" in response.text
