@@ -8,6 +8,7 @@ The project is developed as a solo project and follows an iterative development 
 
 - Python
 - FastAPI
+- SQLModel
 - SQLite
 - HTML, CSS and JavaScript
 - pytest
@@ -22,10 +23,14 @@ Browser-based Frontend
         ↓
    FastAPI Backend
         ↓
+      SQLModel
+        ↓
    SQLite Database
 ```
 
-The project is currently in Sprint 0. The initial technical setup includes a minimal FastAPI backend and an automated health-check test.
+The project is currently in Sprint 1.
+
+The first end-to-end inventory workflow allows the user to create products through a browser interface, store them persistently in SQLite through the FastAPI REST API, and view the stored products in the browser.
 
 ## Requirements
 
@@ -64,7 +69,7 @@ Install the required dependencies:
 pip install -r requirements.txt
 ```
 
-## Run the Backend
+## Run the Application
 
 Start the FastAPI development server:
 
@@ -78,10 +83,27 @@ The backend will be available at:
 http://127.0.0.1:8000
 ```
 
-Health endpoint:
+## Browser Interface
+
+After starting the application, open:
 
 ```text
-http://127.0.0.1:8000/health
+http://127.0.0.1:8000/
+```
+
+The current browser interface supports:
+
+- adding a product;
+- entering an initial stock quantity;
+- defining a minimum stock level;
+- viewing stored products.
+
+## API Endpoints
+
+### Health Check
+
+```http
+GET /health
 ```
 
 Expected response:
@@ -91,6 +113,22 @@ Expected response:
   "status": "ok"
 }
 ```
+
+### Create Product
+
+```http
+POST /products
+```
+
+Creates and stores a new product.
+
+### View Products
+
+```http
+GET /products
+```
+
+Returns the products stored in the SQLite database.
 
 FastAPI automatically generated API documentation is available at:
 
@@ -106,11 +144,23 @@ With the virtual environment activated, run:
 python -m pytest
 ```
 
-The current Sprint 0 test verifies that the health endpoint:
+The current automated test suite verifies:
 
-- is available;
-- returns HTTP status `200`;
-- returns `{"status": "ok"}`.
+- the health endpoint;
+- successful product creation;
+- rejection of negative initial quantities;
+- rejection of empty product names;
+- product-name trimming;
+- retrieval of stored products;
+- successful loading of the browser interface.
+
+The current local test result is:
+
+```text
+7 passed
+```
+
+The product API tests use an isolated in-memory SQLite database so that automated testing does not modify the local application database.
 
 ## Continuous Integration
 
@@ -130,4 +180,31 @@ Project documentation is stored in the `docs/` directory and includes:
 - working agreement and Definition of Done;
 - glossary and risks;
 - architecture;
-- decision log.
+- decision log;
+- sprint plans;
+- sprint reviews and retrospectives;
+- living report.
+
+## Current Sprint
+
+Sprint 1 focuses primarily on:
+
+**US-01 — Add a Product**
+
+The first end-to-end workflow is implemented on the feature branch and includes:
+
+```text
+Browser Interface
+        ↓
+REST API
+        ↓
+Input Validation
+        ↓
+SQLModel
+        ↓
+SQLite
+        ↓
+Automated Tests
+```
+
+US-01 will be considered Done after the remaining Definition of Done activities are completed, including CI verification, self-review, Pull Request review and merge into `main`.
