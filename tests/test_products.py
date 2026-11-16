@@ -60,6 +60,7 @@ def test_create_product_rejects_negative_quantity():
             "minimum_stock_level": 2,
         },
     )
+    assert response.status_code == 422
 
 def test_create_product_rejects_negative_minimum_stock_level():
     response = client.post(
