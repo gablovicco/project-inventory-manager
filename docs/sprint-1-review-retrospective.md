@@ -76,6 +76,53 @@ US-02 is not automatically considered complete because its full acceptance crite
 
 Stock increases, stock decreases, stock movement history, low-stock behavior, product editing and search were not implemented during Sprint 1 and remain future backlog work.
 
+## Backlog Changes
+
+The Product Backlog was reviewed at the end of Sprint 1.
+
+The following status changes were made:
+
+- US-01 — Add a Product moved to Done after its acceptance criteria were verified, CI passed, Pull Request #18 was merged into `main`, and Issue #1 was closed.
+- US-02 — View Products and Current Stock remains open and P1. Some product-list functionality was implemented to support US-01, but US-02 has not been marked Done because its complete acceptance criteria have not yet been evaluated.
+- US-04 — Record Stock Increase remains open and P1.
+- US-05 — Record Stock Decrease remains open and P1.
+- US-03, US-06 and US-07 remain P2.
+- US-08 remains P3.
+
+No backlog priorities were changed during Sprint 1.
+
+The Sprint 1 implementation experience did not require expanding the product scope. The project will continue to prioritize the remaining P1 inventory workflows before starting lower-priority functionality.
+
+## Product Capability After Sprint 1
+
+At the end of Sprint 1, the product can:
+
+- open a browser-based inventory interface;
+- create a product with a name, initial quantity and minimum stock level;
+- validate product input in the backend;
+- reject invalid negative quantities;
+- store valid products persistently in SQLite;
+- retrieve stored products through the REST API;
+- display stored products in the browser.
+
+The application therefore provides its first complete end-to-end inventory workflow.
+
+## Remaining Uncertainty
+
+The stock-changing workflow has not yet been implemented.
+
+The following behavior therefore remains to be implemented and verified in later sprints:
+
+- increasing product stock;
+- decreasing product stock;
+- preventing a stock decrease from producing a negative quantity;
+- creating Stock Movement records;
+- verifying that the displayed quantity reflects completed stock operations;
+- displaying stock movement history;
+- low-stock behavior.
+
+US-02 also remains open because its complete acceptance criteria have not yet been evaluated independently.
+
 ## Retrospective
 
 ### What Went Well
