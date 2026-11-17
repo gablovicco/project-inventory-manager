@@ -123,6 +123,76 @@ The following behavior therefore remains to be implemented and verified in later
 
 US-02 also remains open because its complete acceptance criteria have not yet been evaluated independently.
 
+## Peer Review Feedback
+
+An external peer review was performed after the Sprint 1 increment was completed.
+
+The reviewer inspected the code, automated tests, documentation and Git history and also ran the application locally.
+
+All eight automated tests passed successfully in the reviewer's environment.
+
+The reviewer positively noted:
+
+- the detailed project documentation;
+- preservation of superseded decisions in the Decision Log, such as the transition from PySide6 to the browser-based interface;
+- honest documentation of development problems in the retrospectives;
+- simple and readable implementation code;
+- use of an isolated in-memory database for automated tests so that the local `inventory.db` file is not modified.
+
+The review also identified several possible improvements.
+
+### Robustness and Validation
+
+Very large numeric quantity values can exceed the integer range supported by SQLite and may cause a server error.
+
+A future improvement would be to define reasonable maximum values for quantity fields.
+
+The reviewer also observed that input validation could be stricter. Some values can be converted automatically by the validation layer, product names currently have no maximum length, and duplicate or case-variant product names are currently allowed.
+
+These behaviors are not currently defined by the Sprint 1 acceptance criteria, but they may be considered as future validation improvements.
+
+### Application Paths
+
+The application currently uses relative paths such as `app/static` and `inventory.db`.
+
+This means the documented startup procedure should be executed from the project root directory.
+
+Using paths based on the application file location could make the application more robust if it is started from another working directory.
+
+### Dependency Reproducibility
+
+The dependencies in `requirements.txt` are currently not pinned to specific versions.
+
+The current CI workflow installs the latest compatible versions available at execution time.
+
+Pinning or locking dependency versions may improve reproducibility in later development.
+
+### User Interface Feedback
+
+The browser interface currently displays a general error message when product creation fails:
+
+`Could not add product.`
+
+More specific validation feedback could improve usability.
+
+The product list also currently has no explicit empty-state message when no products exist.
+
+### Persistence Verification
+
+Product persistence is implemented using SQLite, but there is not yet an automated test that explicitly restarts or recreates the application and verifies that previously stored data remains available.
+
+This could provide stronger verification for the persistence quality scenario in a later sprint.
+
+### Review Outcome
+
+The peer review did not identify a problem that prevents the Sprint 1 goal from being considered complete.
+
+The main product-creation workflow works as intended, and all eight automated tests passed in the reviewer's environment.
+
+The identified findings are mainly robustness, validation, reproducibility and usability improvements that can be evaluated during Sprint 2 planning and later development.
+
+No backlog priority was changed immediately as a result of the peer review.
+
 ## Retrospective
 
 ### What Went Well
@@ -134,6 +204,8 @@ Introducing SQLModel provided a simple persistence layer that works naturally wi
 Automated tests helped identify missing validation coverage before the Pull Request was merged.
 
 The GitHub Actions workflow successfully verified the implementation before it was merged into `main`.
+
+The external peer review also provided useful feedback about robustness, validation, dependency reproducibility, usability and persistence verification without identifying a blocker in the completed Sprint 1 workflow.
 
 ### Difficulties and Lessons Learned
 
@@ -149,6 +221,8 @@ Another lesson was that a passing test count alone is not sufficient evidence of
 
 A dependency deprecation warning is still displayed during testing. It does not currently cause test failures, but it remains a technical item that may need attention later.
 
+The peer review also showed that passing the defined Sprint 1 acceptance criteria does not mean that all possible edge cases are already covered. Robustness limits and stricter validation can be improved incrementally without expanding the completed Sprint 1 scope retrospectively.
+
 ## Sprint 2 Improvement Action
 
 During Sprint 2, implementation changes will be made locally in PyCharm and pushed to GitHub through the normal Git workflow.
@@ -158,3 +232,5 @@ Documentation changes on the same active branch will be grouped after the implem
 If editing switches between GitHub web and the local repository, the latest remote changes will be pulled before continuing local work.
 
 This should reduce unnecessary branch divergence and make the Git workflow more predictable during Sprint 2.
+
+The peer review findings will also be considered during Sprint 2 planning. Improvements will be prioritized only where they support the remaining P1 workflows or address a clear reliability problem, so that robustness work does not create unnecessary scope growth.
