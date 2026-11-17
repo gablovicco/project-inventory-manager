@@ -55,3 +55,4 @@ Stored Product
 GET /products
         ↓
 Browser Product List
+```
