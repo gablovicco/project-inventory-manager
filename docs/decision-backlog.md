@@ -92,7 +92,9 @@ Python will be used as the main programming language for the project.
 
 ### Reason
 
-The project requires a REST API, database access, automated testing and an  interface. -At the time of this decision, a desktop interface was planned; this was later superseded by D-008.-
+The project requires a REST API, database access, automated testing and a user interface.
+
+At the time of this decision, a desktop interface was planned. This interface decision was later superseded by D-008, which replaced the planned desktop client with a browser-based interface.
 
 Python allows these parts to be implemented with relatively little setup and boilerplate, which is important for a project developed by one person.
 
@@ -178,7 +180,7 @@ Keeping the database local also makes the application easier to reproduce and ru
 - The initial architecture is intended primarily for a local, single-user environment.
 - If the product later requires multiple simultaneous users, centralized remote access or distributed deployment, the database choice may need to be reconsidered.
 
-  ---
+---
 
 ## D-008 — Replace the Desktop Client with a Simple Browser-Based Interface
 
@@ -209,6 +211,8 @@ For a project developed by one person, this reduces unnecessary setup and allows
 - The frontend will communicate with FastAPI through HTTP.
 - The frontend will never access SQLite directly.
 - No frontend framework will be added unless a later requirement provides a clear reason for it.
+
+---
 
 ## D-009 — Use SQLModel for Database Access
 
